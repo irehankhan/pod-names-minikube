@@ -428,13 +428,13 @@ flaskapp-service-2   ClusterIP      10.104.33.77     <none>        81/TCP       
 flaskapp-service-3   LoadBalancer   10.101.172.139   <pending>     82:31993/TCP   112m
 kubernetes           ClusterIP      10.96.0.1        <none>        443/TCP        27h
 ```
-![Alt text](image.png)
+![Alt text](images/image.png)
 
-![Alt text](image-1.png)
+![Alt text](images/image-1.png)
 
-![Alt text](image-2.png)
+![Alt text](images/image-2.png)
 
-![Alt text](image-3.png)
+![Alt text](images/image-3.png)
 
 ## Running Services
 
@@ -472,7 +472,7 @@ Result
 
 You can check in below screenshot pod names on ips
 
-![Alt text](image-4.png)
+![Alt text](images/image-4.png)
 
 flaskapp-service-2
 
@@ -502,7 +502,7 @@ Result
 
 You can check in below screenshot pod names on ips
 
-![Alt text](image-5.png)
+![Alt text](images/image-5.png)
 
 flaskapp-service-3
 
@@ -531,7 +531,7 @@ Result
 
 You can check in below screenshot pod names on ips
 
-![Alt text](image-6.png)
+![Alt text](images/image-6.png)
 
 ## Accessibility Demonstration:
 
