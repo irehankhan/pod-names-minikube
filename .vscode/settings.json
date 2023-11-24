@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "kubernetes://schema/apps/v1%40deployment": "file:///Users/irehankhan/DevOps/kubernetes/pod-name/multi-flaskapp-deployment.yaml"
+    }
+}

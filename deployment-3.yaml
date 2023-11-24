@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flaskapp-3
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: flaskapp-3
+  template:
+    metadata:
+      labels:
+        app: flaskapp-3
+    spec:
+      containers:
+      - name: flask-app
+        image: irehankhan/display-pod-name:1.0
+        ports:
+        - containerPort: 5000
+        resources:
+          limits:
+            cpu: 1000m
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 1Gi
+        env:
+        - name: FLASK_ENV
+          value: development
+        - name: POD_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.name  # Get the pod name from metadata
+      restartPolicy: Always
+
+---
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: flaskapp-service-3
+
+spec:
+  selector:
+    app: flaskapp-3
+
+
+  ports:
+    - protocol: TCP
+      port: 82
+      targetPort: 5000
+  type: LoadBalancer
