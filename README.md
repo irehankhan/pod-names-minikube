@@ -633,3 +633,36 @@ If you want to make your service accessible from outside the cluster, you might 
 ```
 Assuming you have a Kubernetes cluster and have deployed a service named flaskapp-service-3 in the default namespace with a target port of 82 and an external URL of http://192.168.49.2:31993, here are the general steps:
 
+1. Create a LoadBalancer service:
+Ensure that your service is of type LoadBalancer. This will instruct Kubernetes to provision an external load balancer.
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: flaskapp-service-3
+  namespace: default
+spec:
+  selector:
+    app: flaskapp
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 82
+  type: LoadBalancer
+```
+2. Wait for the LoadBalancer to be provisioned:
+The external IP address might take some time to be assigned. You can check the status using:
+```bash
+kubectl get services -n default
+```
+Look for the external IP under the EXTERNAL-IP column. Once an external IP is assigned, your service is accessible externally.
+3. Access the service externally:
+Use the external IP and port to access your service. In this case, it would be something like http://<external-ip>:<port>. For example:
+```bash
+http://192.168.49.2:31993
+```
+Replace <external-ip> and <port> with the actual values assigned by your LoadBalancer service.
+
+Remember that some cloud providers might take more time to provision the external IP. Additionally, if you are using a local Kubernetes setup (like Minikube), the external IP might not be directly accessible, and you might need to use the IP of the machine running the cluster along with the specified port.
+
+<h1>Thank You!</h1>
