@@ -539,7 +539,7 @@ You can check in below screenshot pod names on ips
 
 - How pods are accessible within the cluster using the NodePort service
 
-It looks like you are using Minikube to manage a Kubernetes cluster, and you have three Flask services (flaskapp-service-1, flaskapp-service-2, and flaskapp-service-3) exposed via NodePort services. In below table shows the information about these services, including their namespace, name, target port, and URL.
+We are using Minikube to manage a Kubernetes cluster, and we have three Flask services (flaskapp-service-1, flaskapp-service-2, and flaskapp-service-3) exposed via NodePort services. In below table shows the information about these services, including their namespace, name, target port, and URL.
 
 ```bash
 |-----------|--------------------|-------------|---------------------------|
@@ -583,7 +583,7 @@ Remember that the NodePort is used for accessing services from outside the clust
 
 - Why pods are inaccessible outside the cluster when using the ClusterIP service
 
-In Kubernetes, a Service is an abstraction that defines a logical set of Pods and a policy by which to access them. The ClusterIP service type you mentioned is an internal service type that exposes the Service on a cluster-internal IP address. This means that the Service is only accessible from within the cluster.
+In Kubernetes, a Service is an abstraction that defines a logical set of Pods and a policy by which to access them. The ClusterIP service type we mentioned is an internal service type that exposes the Service on a cluster-internal IP address. This means that the Service is only accessible from within the cluster.
 
 ```bash
 |-----------|--------------------|-------------|--------------|
@@ -605,7 +605,7 @@ When you create a Service with ClusterIP, it gets assigned a cluster-internal IP
 Here's a breakdown of why pods are inaccessible outside the cluster when using a ClusterIP service:
 
 1. Cluster-Internal IP Address: The ClusterIP service is assigned an internal IP address, and this IP address is only reachable from within the cluster's network. It's not exposed externally.
-2. No NodePort: In your provided information, it mentions "No node port." In Kubernetes, a NodePort service type would expose the Service on a port on each node of the cluster. Since there's no NodePort in your case, the Service isn't accessible externally through the nodes.
+2. No NodePort: In our output table it mentions "No node port." In Kubernetes, a NodePort service type would expose the Service on a port on each node of the cluster. Since there's no NodePort in your case, the Service isn't accessible externally through the nodes.
 3. Designed for Internal Communication: The ClusterIP service type is primarily designed for communication between services within the cluster. It's not intended to be directly accessed from outside the cluster.
 
 If you want to make your service accessible from outside the cluster, you might consider using a different service type, such as NodePort or LoadBalancer.
@@ -631,7 +631,7 @@ If you want to make your service accessible from outside the cluster, you might 
 |-----------|--------------------|-------------|------------------------|
 
 ```
-Assuming you have a Kubernetes cluster and have deployed a service named flaskapp-service-3 in the default namespace with a target port of 82 and an external URL of http://192.168.49.2:31993, here are the general steps:
+We have a Kubernetes cluster and have deployed a service named flaskapp-service-3 in the default namespace with a target port of 82 and an external URL of http://192.168.49.2:31993, here are the general steps:
 
 1. Create a LoadBalancer service:
 Ensure that your service is of type LoadBalancer. This will instruct Kubernetes to provision an external load balancer.
